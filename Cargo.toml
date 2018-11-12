@@ -10,7 +10,7 @@ time = "*"
 mmap="*"
 rand="*"
 byteorder="*"
-timely = { git = "https://github.com/frankmcsherry/timely-dataflow" }
+timely  = { git = "https://github.com/frankmcsherry/timely-dataflow", branch = "progress_hack"  }
 timely_sort="0.1.*"
 
 [profile.release]
