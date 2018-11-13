@@ -138,9 +138,7 @@ fn main () {
                     // receive data from workers, accumulate in src
                     if peers & (peers - 1) > 0 {
                         input2.for_each(|iter, data| {
-                            if iter.inner < max_iterations {
-                                notificator.notify_at(iter.retain());
-                            }
+                            notificator.notify_at(iter.retain());
                             for &(node, rank) in data.iter() {
                                 src[node as usize / peers] += rank;
                             }
@@ -152,9 +150,7 @@ fn main () {
                             shift += 1;
                         }
                         input2.for_each(|iter, data| {
-                            if itern.inner < max_iterations {
-                                notificator.notify_at(iter.retain());
-                            }
+                            notificator.notify_at(iter.retain());
                             for &(node, rank) in data.iter() {
                                 src[(node as usize) >> shift] += rank;
                             }
