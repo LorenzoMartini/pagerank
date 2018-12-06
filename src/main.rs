@@ -6,6 +6,10 @@ extern crate core_affinity;
 
 use timely::dataflow::operators::{Input, Operator, Feedback, ConnectLoop};
 use timely::dataflow::channels::pact::Exchange;
+use std::alloc::System;
+
+#[global_allocator]
+static GLOBAL: System = System;
 
 mod typedrw;
 mod graphmap;
