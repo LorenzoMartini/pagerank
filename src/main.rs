@@ -2,7 +2,7 @@ extern crate mmap;
 extern crate time;
 extern crate timely;
 extern crate getopts;
-extern crate core_affinity;
+extern crate timely_affinity;
 
 use timely::dataflow::operators::{Input, Operator, Feedback, ConnectLoop};
 use timely::dataflow::channels::pact::Exchange;
@@ -43,14 +43,9 @@ fn main () {
             .flat_map(|x| x)
             .collect();
 
-        timely::execute_from_args(timely_args.into_iter(), move |root| {
-
+        ::timely_affinity::execute::execute_from_args(timely_args.into_iter(), move |root| {
             let index = root.index() as usize;
             let peers = root.peers() as usize;
-
-            // Pin core
-            let core_ids = core_affinity::get_core_ids().unwrap();
-            core_affinity::set_for_current(core_ids[index % core_ids.len()]);
 
             let start = time::precise_time_s();
 

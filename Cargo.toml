@@ -4,7 +4,6 @@ version = "0.1.0"
 authors = ["Frank McSherry <fmcsherry@me.com>"]
 
 [dependencies]
-core_affinity = "0.5.9"
 getopts="*"
 time = "*"
 mmap="*"
@@ -12,6 +11,7 @@ rand="*"
 byteorder="*"
 timely = { git = "https://github.com/frankmcsherry/timely-dataflow" }
 timely_sort="0.1.*"
+timely-affinity = { git = "https://github.com/utaal/timely-affinity" }
 
 [profile.release]
 opt-level = 3
